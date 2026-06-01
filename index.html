@@ -9,100 +9,38 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-
 :root{
-  --white:#ffffff;
-  --bg:#F9F8F6;
-  --bg2:#F2F0EC;
-  --border:#E8E4DE;
-  --border2:#D4CEC5;
-  --text:#1C1917;
-  --text2:#78716C;
-  --text3:#A8A29E;
+  --white:#ffffff;--bg:#F9F8F6;--bg2:#F2F0EC;
+  --border:#E8E4DE;--border2:#D4CEC5;
+  --text:#1C1917;--text2:#78716C;--text3:#A8A29E;
   --shadow-xs:0 1px 2px rgba(0,0,0,.05);
   --shadow-sm:0 2px 8px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);
   --shadow-md:0 8px 24px rgba(0,0,0,.08),0 2px 6px rgba(0,0,0,.04);
   --r:10px;--r-sm:6px;--r-lg:14px;
-  /* status colors */
-  --c-todo:#4F80E2;
-  --c-doing:#E28C35;
-  --c-pending:#E25252;
-  --c-done:#3BAD68;
-  --bg-todo:#EEF3FD;
-  --bg-doing:#FDF3E8;
-  --bg-pending:#FDEAEA;
-  --bg-done:#E8F7EF;
-  /* prio */
-  --prio1:#E25252;
-  --prio2:#E28C35;
-  --prio3:#4F80E2;
-  --prio4:#C0BAB3;
+  --c-todo:#4F80E2;--c-doing:#E28C35;--c-pending:#E25252;--c-done:#3BAD68;
+  --bg-todo:#EEF3FD;--bg-doing:#FDF3E8;--bg-pending:#FDEAEA;--bg-done:#E8F7EF;
+  --prio1:#E25252;--prio2:#E28C35;--prio3:#4F80E2;--prio4:#C0BAB3;
 }
-
 body{font-family:'Instrument Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:14px;line-height:1.5}
-
-/* ── HEADER ── */
-header{
-  background:var(--white);
-  border-bottom:1px solid var(--border);
-  padding:0 28px;
-  height:58px;
-  display:flex;align-items:center;gap:16px;
-  position:sticky;top:0;z-index:50;
-}
-.logo{
-  font-family:'Instrument Serif',serif;
-  font-size:20px;
-  letter-spacing:-.3px;
-  flex:1;
-  color:var(--text);
-}
+header{background:var(--white);border-bottom:1px solid var(--border);padding:0 28px;height:58px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:50}
+.logo{font-family:'Instrument Serif',serif;font-size:20px;letter-spacing:-.3px;flex:1}
 .logo em{font-style:italic;color:var(--text2)}
 .h-actions{display:flex;gap:8px}
-
 button{font-family:'Instrument Sans',sans-serif;cursor:pointer;border:none;background:none;color:var(--text);font-size:13px}
-.btn{
-  display:inline-flex;align-items:center;gap:6px;
-  padding:7px 14px;
-  border-radius:var(--r-sm);
-  border:1px solid var(--border2);
-  background:var(--white);
-  color:var(--text);
-  font-size:13px;font-weight:500;
-  transition:all .15s;
-  white-space:nowrap;
-}
-.btn:hover{background:var(--bg2);border-color:var(--border2)}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:var(--r-sm);border:1px solid var(--border2);background:var(--white);color:var(--text);font-size:13px;font-weight:500;transition:all .15s;white-space:nowrap}
+.btn:hover{background:var(--bg2)}
 .btn-solid{background:var(--text);color:var(--white);border-color:var(--text)}
 .btn-solid:hover{opacity:.85}
 .btn-gcal.on{border-color:#34A853;color:#1E7E34;background:#F0FBF4}
-
-/* ── MAIN ── */
+.btn-gcal.loading{opacity:.6;pointer-events:none}
 main{max-width:1280px;margin:0 auto;padding:28px 20px}
-
-/* ── STATS BAR ── */
 .stats{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap}
-.stat{
-  flex:1;min-width:110px;
-  background:var(--white);
-  border:1px solid var(--border);
-  border-radius:var(--r);
-  padding:14px 16px;
-  box-shadow:var(--shadow-xs);
-}
+.stat{flex:1;min-width:110px;background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;box-shadow:var(--shadow-xs)}
 .stat-n{font-size:24px;font-weight:600;letter-spacing:-1px;line-height:1}
 .stat-l{font-size:11px;color:var(--text3);margin-top:4px;font-weight:500;text-transform:uppercase;letter-spacing:.5px}
-
-/* ── TOOLBAR ── */
 .toolbar{display:flex;align-items:center;gap:8px;margin-bottom:20px;flex-wrap:wrap}
 .pills{display:flex;gap:5px;flex-wrap:wrap;flex:1}
-.pill{
-  padding:5px 13px;border-radius:20px;
-  border:1px solid var(--border);
-  background:var(--white);
-  color:var(--text2);font-size:12px;font-weight:500;
-  cursor:pointer;transition:all .15s;
-}
+.pill{padding:5px 13px;border-radius:20px;border:1px solid var(--border);background:var(--white);color:var(--text2);font-size:12px;font-weight:500;cursor:pointer;transition:all .15s}
 .pill:hover{color:var(--text);border-color:var(--border2)}
 .pill.on{background:var(--text);color:var(--white);border-color:var(--text)}
 .pill.on-todo{background:var(--bg-todo);border-color:var(--c-todo);color:var(--c-todo)}
@@ -111,202 +49,79 @@ main{max-width:1280px;margin:0 auto;padding:28px 20px}
 .pill.on-done{background:var(--bg-done);border-color:var(--c-done);color:var(--c-done)}
 .sort-wrap{display:flex;align-items:center;gap:6px}
 .sort-wrap label{font-size:12px;color:var(--text3)}
-select{
-  font-family:'Instrument Sans',sans-serif;
-  padding:5px 10px;border-radius:var(--r-sm);
-  border:1px solid var(--border);background:var(--white);
-  color:var(--text);font-size:12px;cursor:pointer;
-}
-
-/* ── BOARD ── */
+select{font-family:'Instrument Sans',sans-serif;padding:5px 10px;border-radius:var(--r-sm);border:1px solid var(--border);background:var(--white);color:var(--text);font-size:12px;cursor:pointer}
 .board{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;align-items:start}
 @media(max-width:860px){.board{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:500px){.board{grid-template-columns:1fr}}
-
-.lane{
-  background:var(--bg2);
-  border-radius:var(--r-lg);
-  border:1px solid var(--border);
-  padding:12px;
-  min-height:200px;
-  transition:background .15s;
-}
-.lane.drag-over{
-  background:#EEF3FD;
-  border-color:var(--c-todo);
-}
-.lane-head{
-  display:flex;align-items:center;gap:8px;
-  padding:6px 8px 12px;
-}
+.lane{background:var(--bg2);border-radius:var(--r-lg);border:1px solid var(--border);padding:12px;min-height:200px;transition:background .15s,border-color .15s}
+.lane.drag-over{background:#EEF3FD;border-color:var(--c-todo)}
+.lane-head{display:flex;align-items:center;gap:8px;padding:6px 8px 12px}
 .lane-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 .lane-todo .lane-dot{background:var(--c-todo)}
 .lane-doing .lane-dot{background:var(--c-doing)}
 .lane-pending .lane-dot{background:var(--c-pending)}
 .lane-done .lane-dot{background:var(--c-done)}
 .lane-title{font-size:12px;font-weight:600;letter-spacing:.2px;flex:1}
-.lane-count{
-  font-size:11px;font-weight:500;
-  background:var(--white);
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:1px 8px;
-  color:var(--text2);
-}
+.lane-count{font-size:11px;font-weight:500;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1px 8px;color:var(--text2)}
 .lane-body{display:flex;flex-direction:column;gap:7px;min-height:60px}
-
-/* ── CARD ── */
-.card{
-  background:var(--white);
-  border:1px solid var(--border);
-  border-radius:var(--r);
-  padding:12px 13px;
-  cursor:grab;
-  transition:box-shadow .15s,opacity .15s,transform .15s;
-  box-shadow:var(--shadow-xs);
-  animation:fadeUp .18s ease both;
-  user-select:none;
-  position:relative;
-}
+.card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:12px 13px;cursor:grab;transition:box-shadow .15s,opacity .15s,transform .15s;box-shadow:var(--shadow-xs);animation:fadeUp .18s ease both;user-select:none}
 .card:active{cursor:grabbing}
 @keyframes fadeUp{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
 .card:hover{box-shadow:var(--shadow-sm);border-color:var(--border2)}
 .card.dragging{opacity:.4;transform:scale(.97);cursor:grabbing}
 .card.done-card{opacity:.5}
 .card-top{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px}
-.prio-bar{
-  width:3px;min-height:36px;border-radius:2px;flex-shrink:0;margin-top:1px;
-}
-.prio-bar-1{background:var(--prio1)}
-.prio-bar-2{background:var(--prio2)}
-.prio-bar-3{background:var(--prio3)}
-.prio-bar-4{background:var(--prio4)}
+.prio-bar{width:3px;min-height:36px;border-radius:2px;flex-shrink:0;margin-top:1px}
+.prio-bar-1{background:var(--prio1)}.prio-bar-2{background:var(--prio2)}.prio-bar-3{background:var(--prio3)}.prio-bar-4{background:var(--prio4)}
 .card-body{flex:1;min-width:0}
-.card-title{
-  font-size:13px;font-weight:500;color:var(--text);
-  line-height:1.4;word-break:break-word;
-}
+.card-title{font-size:13px;font-weight:500;color:var(--text);line-height:1.4;word-break:break-word}
 .card-title.struck{text-decoration:line-through;color:var(--text3)}
 .card-desc{font-size:11px;color:var(--text2);margin-top:3px;line-height:1.5;word-break:break-word}
 .card-meta{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-top:8px}
 .badge{font-size:10px;font-weight:500;padding:2px 7px;border-radius:8px}
-.badge-pro{background:#E8F7EF;color:#1E7E34}
-.badge-pes{background:#EEF3FD;color:#2B5BC4}
+.badge-pro{background:#E8F7EF;color:#1E7E34}.badge-pes{background:#EEF3FD;color:#2B5BC4}
 .badge-prio{font-size:10px;color:var(--text3)}
 .card-date{font-size:10px;color:var(--text3);margin-left:auto;letter-spacing:.2px}
-.gcal-icon{width:6px;height:6px;border-radius:50%;background:#4285F4;flex-shrink:0}
-.card-actions{
-  display:flex;gap:3px;
-  margin-top:9px;padding-top:8px;
-  border-top:1px solid var(--border);
-}
-.card-actions button{
-  flex:1;padding:4px 6px;border-radius:5px;
-  font-size:11px;font-weight:500;color:var(--text3);
-  display:flex;align-items:center;justify-content:center;gap:4px;
-  transition:all .12s;border:1px solid transparent;
-}
+.gcal-icon{width:6px;height:6px;border-radius:50%;background:#4285F4;flex-shrink:0;title:"No Google Agenda"}
+.card-actions{display:flex;gap:3px;margin-top:9px;padding-top:8px;border-top:1px solid var(--border)}
+.card-actions button{flex:1;padding:4px 6px;border-radius:5px;font-size:11px;font-weight:500;color:var(--text3);display:flex;align-items:center;justify-content:center;gap:4px;transition:all .12s;border:1px solid transparent}
 .card-actions button:hover{background:var(--bg2);color:var(--text);border-color:var(--border)}
 .card-actions .btn-done:hover{color:#1E7E34;background:#E8F7EF;border-color:#A8D8B4}
 .card-actions .btn-del:hover{color:#C0392B;background:#FDEAEA;border-color:#F5B0A8}
-.card-drag-hint{
-  font-size:10px;color:var(--text3);
-  text-align:center;padding:16px 0 4px;
-  letter-spacing:.2px;
-}
-.empty-lane{
-  text-align:center;padding:20px 10px;
-  font-size:12px;color:var(--text3);
-  border:1.5px dashed var(--border);
-  border-radius:var(--r-sm);
-}
-
-/* ── MODAL ── */
-.overlay{
-  position:fixed;inset:0;
-  background:rgba(28,25,23,.35);
-  backdrop-filter:blur(3px);
-  z-index:200;
-  display:flex;align-items:center;justify-content:center;
-  padding:20px;
-  animation:fadeIn .15s ease;
-}
+.empty-lane{text-align:center;padding:20px 10px;font-size:12px;color:var(--text3);border:1.5px dashed var(--border);border-radius:var(--r-sm)}
+.overlay{position:fixed;inset:0;background:rgba(28,25,23,.35);backdrop-filter:blur(3px);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;animation:fadeIn .15s ease}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-.modal{
-  background:var(--white);
-  border-radius:var(--r-lg);
-  border:1px solid var(--border);
-  padding:26px;
-  width:100%;max-width:440px;
-  box-shadow:var(--shadow-md);
-  animation:popIn .18s ease;
-}
+.modal{background:var(--white);border-radius:var(--r-lg);border:1px solid var(--border);padding:26px;width:100%;max-width:460px;box-shadow:var(--shadow-md);animation:popIn .18s ease}
 @keyframes popIn{from{opacity:0;transform:scale(.96) translateY(6px)}to{opacity:1;transform:none}}
-.modal-title{
-  font-family:'Instrument Serif',serif;
-  font-size:18px;margin-bottom:20px;
-  letter-spacing:-.3px;
-}
+.modal-title{font-family:'Instrument Serif',serif;font-size:18px;margin-bottom:20px;letter-spacing:-.3px}
 .fg{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .fr{margin-bottom:13px}
-.fr label{
-  display:block;font-size:11px;font-weight:600;
-  color:var(--text3);text-transform:uppercase;
-  letter-spacing:.4px;margin-bottom:5px;
-}
-.fr input,.fr select,.fr textarea{
-  width:100%;padding:8px 11px;
-  border-radius:var(--r-sm);
-  border:1px solid var(--border);
-  background:var(--bg);color:var(--text);
-  font-family:'Instrument Sans',sans-serif;font-size:13px;
-  transition:border-color .15s;
-}
+.fr label{display:block;font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.4px;margin-bottom:5px}
+.fr input,.fr select,.fr textarea{width:100%;padding:8px 11px;border-radius:var(--r-sm);border:1px solid var(--border);background:var(--bg);color:var(--text);font-family:'Instrument Sans',sans-serif;font-size:13px;transition:border-color .15s}
 .fr input:focus,.fr select:focus,.fr textarea:focus{outline:none;border-color:var(--border2);background:var(--white)}
 .fr textarea{min-height:68px;resize:vertical}
-.check-row{
-  display:flex;align-items:center;gap:9px;
-  padding:9px 11px;
-  border:1px solid var(--border);border-radius:var(--r-sm);
-  cursor:pointer;margin-bottom:13px;
-  font-size:12px;color:var(--text2);
-}
+.check-row{display:flex;align-items:center;gap:9px;padding:9px 11px;border:1px solid var(--border);border-radius:var(--r-sm);cursor:pointer;margin-bottom:13px;font-size:12px;color:var(--text2)}
 .check-row input{width:13px;height:13px;cursor:pointer;accent-color:var(--c-todo)}
 .m-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:4px}
-
-/* ── GCAL INFO MODAL ── */
-.gcal-steps{background:var(--bg2);border-radius:var(--r-sm);padding:14px;margin-bottom:16px}
+/* gcal modal */
+.gcal-setup{background:var(--bg2);border-radius:var(--r-sm);padding:14px;margin-bottom:16px}
 .gs{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start}
 .gs:last-child{margin-bottom:0}
-.gs-n{
-  width:20px;height:20px;border-radius:50%;
-  background:var(--bg-todo);color:var(--c-todo);
-  font-size:11px;font-weight:600;
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;
-}
+.gs-n{width:20px;height:20px;border-radius:50%;background:var(--bg-todo);color:var(--c-todo);font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .gs p{font-size:12px;color:var(--text2);line-height:1.55}
 .gs a{color:var(--c-todo);text-decoration:none}
 .gs a:hover{text-decoration:underline}
-
-/* ── TOAST ── */
-.toast{
-  position:fixed;bottom:24px;left:50%;
-  transform:translateX(-50%);
-  background:var(--text);color:var(--white);
-  padding:9px 20px;border-radius:20px;
-  font-size:13px;font-weight:500;
-  z-index:999;pointer-events:none;
-  animation:toastUp .2s ease;
-  white-space:nowrap;
-}
+.gcal-status{display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:var(--r-sm);font-size:12px;margin-bottom:14px}
+.gcal-status.ok{background:#E8F7EF;color:#1E7E34;border:1px solid #A8D8B4}
+.gcal-status.err{background:#FDEAEA;color:#C0392B;border:1px solid #F5B0A8}
+.gcal-status.info{background:var(--bg-todo);color:var(--c-todo);border:1px solid #B5D0F0}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--text);color:var(--white);padding:9px 20px;border-radius:20px;font-size:13px;font-weight:500;z-index:999;pointer-events:none;animation:toastUp .2s ease;white-space:nowrap}
 @keyframes toastUp{from{opacity:0;transform:translateX(-50%) translateY(8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
-
 svg{display:inline-block;vertical-align:middle;flex-shrink:0}
 @media(max-width:540px){.fg{grid-template-columns:1fr}.h-actions .btn-gcal span{display:none}}
 </style>
 </head>
 <body>
-
 <header>
   <div class="logo">agenda <em>&amp;</em> tarefas</div>
   <div class="h-actions">
@@ -336,54 +151,143 @@ svg{display:inline-block;vertical-align:middle;flex-shrink:0}
   </div>
   <div class="board" id="board"></div>
 </main>
-
 <div id="modal-root"></div>
 <div id="toast-root"></div>
 
 <script>
+// ── CONFIG ──────────────────────────────────────────────
+// Coloque aqui o seu Client ID do Google OAuth 2.0
+// Obtenha em: console.cloud.google.com → APIs → Credenciais
+const GCAL_CLIENT_ID = localStorage.getItem('ag_gcal_cid') || '';
+const GCAL_SCOPE = 'https://www.googleapis.com/auth/calendar.events';
+const GCAL_CALENDAR = 'primary'; // ou o ID de um calendário específico
+
+// ── ESTADO ──────────────────────────────────────────────
 const SS = ['todo','doing','pending','done'];
 const SL = {todo:'A fazer',doing:'Fazendo',pending:'Pendente',done:'Concluído'};
 const PL = {1:'Urgente',2:'Alta',3:'Normal',4:'Baixa'};
 
 let tasks = JSON.parse(localStorage.getItem('ag_tasks')||'null') || [
-  {id:1,title:'Reunião com cliente',desc:'Apresentar proposta Q3',type:'pro',status:'doing',prio:1,date:'2026-06-03',gcal:false},
-  {id:2,title:'Revisar relatório mensal',desc:'',type:'pro',status:'todo',prio:2,date:'2026-06-05',gcal:false},
-  {id:3,title:'Consulta médica',desc:'Cardiologista — trazer exames',type:'pes',status:'todo',prio:2,date:'2026-06-10',gcal:false},
-  {id:4,title:'Enviar proposta ao fornecedor',desc:'',type:'pro',status:'pending',prio:1,date:'2026-06-02',gcal:false},
-  {id:5,title:'Academia',desc:'Segunda, quarta e sexta',type:'pes',status:'done',prio:4,date:'',gcal:false},
+  {id:1,title:'Reunião com cliente',desc:'Apresentar proposta Q3',type:'pro',status:'doing',prio:1,date:'2026-06-03',gcal:false,gcalEventId:null},
+  {id:2,title:'Revisar relatório mensal',desc:'',type:'pro',status:'todo',prio:2,date:'2026-06-05',gcal:false,gcalEventId:null},
+  {id:3,title:'Consulta médica',desc:'Cardiologista — trazer exames',type:'pes',status:'todo',prio:2,date:'2026-06-10',gcal:false,gcalEventId:null},
+  {id:4,title:'Enviar proposta ao fornecedor',desc:'',type:'pro',status:'pending',prio:1,date:'2026-06-02',gcal:false,gcalEventId:null},
+  {id:5,title:'Academia',desc:'Segunda, quarta e sexta',type:'pes',status:'done',prio:4,date:'',gcal:false,gcalEventId:null},
 ];
 let nextId = tasks.length ? Math.max(...tasks.map(t=>t.id))+1 : 1;
 let filterStatus = 'all';
 let sortBy = 'prio';
-let gcalOn = !!localStorage.getItem('ag_gcal');
 let editId = null;
-
-// drag state
 let dragId = null;
 
-function save(){localStorage.setItem('ag_tasks',JSON.stringify(tasks))}
+// ── GOOGLE AUTH ──────────────────────────────────────────
+let gTokenClient = null;
+let gAccessToken = localStorage.getItem('ag_gcal_token') || null;
+let gTokenExpiry = parseInt(localStorage.getItem('ag_gcal_expiry') || '0');
+let gcalReady = false;
+
+function isTokenValid(){
+  return gAccessToken && Date.now() < gTokenExpiry - 60000;
+}
+
+function loadGIS(){
+  return new Promise((res,rej)=>{
+    if(window.google?.accounts?.oauth2){res();return}
+    const s=document.createElement('script');
+    s.src='https://accounts.google.com/gsi/client';
+    s.onload=res; s.onerror=()=>rej(new Error('Falha ao carregar Google Identity Services'));
+    document.head.appendChild(s);
+  });
+}
+
+async function ensureToken(){
+  if(isTokenValid()) return true;
+  if(!GCAL_CLIENT_ID){ toast('⚠ Configure o Client ID do Google primeiro'); return false; }
+  await loadGIS();
+  return new Promise((res)=>{
+    gTokenClient = google.accounts.oauth2.initTokenClient({
+      client_id: GCAL_CLIENT_ID,
+      scope: GCAL_SCOPE,
+      callback:(resp)=>{
+        if(resp.error){ toast('Erro ao autenticar: '+resp.error); res(false); return; }
+        gAccessToken = resp.access_token;
+        gTokenExpiry = Date.now() + (resp.expires_in * 1000);
+        localStorage.setItem('ag_gcal_token', gAccessToken);
+        localStorage.setItem('ag_gcal_expiry', String(gTokenExpiry));
+        gcalReady = true;
+        updateGcalBtn();
+        res(true);
+      }
+    });
+    gTokenClient.requestAccessToken({prompt:''});
+  });
+}
+
+async function createGcalEvent(task){
+  if(!await ensureToken()) return null;
+  const start = task.date ? task.date : new Date().toISOString().split('T')[0];
+  const end   = task.date ? task.date : new Date().toISOString().split('T')[0];
+  const body = {
+    summary: `[${task.type==='pro'?'Profissional':'Pessoal'}] ${task.title}`,
+    description: task.desc || '',
+    start: {date: start},
+    end:   {date: end},
+    colorId: task.prio===1?'11':task.prio===2?'6':task.prio===3?'9':'8',
+  };
+  const res = await fetch(
+    `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(GCAL_CALENDAR)}/events`,
+    { method:'POST', headers:{'Authorization':'Bearer '+gAccessToken,'Content-Type':'application/json'}, body:JSON.stringify(body) }
+  );
+  if(!res.ok){ toast('Erro ao criar evento no Google Agenda'); return null; }
+  const data = await res.json();
+  return data.id;
+}
+
+async function updateGcalEvent(task){
+  if(!task.gcalEventId || !await ensureToken()) return;
+  const start = task.date || new Date().toISOString().split('T')[0];
+  const body = {
+    summary: `[${task.type==='pro'?'Profissional':'Pessoal'}] ${task.title}`,
+    description: task.desc || '',
+    start: {date: start},
+    end:   {date: start},
+    colorId: task.prio===1?'11':task.prio===2?'6':task.prio===3?'9':'8',
+  };
+  await fetch(
+    `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(GCAL_CALENDAR)}/events/${task.gcalEventId}`,
+    { method:'PATCH', headers:{'Authorization':'Bearer '+gAccessToken,'Content-Type':'application/json'}, body:JSON.stringify(body) }
+  );
+}
+
+async function deleteGcalEvent(task){
+  if(!task.gcalEventId || !await ensureToken()) return;
+  await fetch(
+    `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(GCAL_CALENDAR)}/events/${task.gcalEventId}`,
+    { method:'DELETE', headers:{'Authorization':'Bearer '+gAccessToken} }
+  );
+}
+
+// ── PERSISTÊNCIA ────────────────────────────────────────
+function save(){ localStorage.setItem('ag_tasks', JSON.stringify(tasks)); }
 
 function toast(msg){
   const el=document.createElement('div');
-  el.className='toast';el.textContent=msg;
+  el.className='toast'; el.textContent=msg;
   document.getElementById('toast-root').appendChild(el);
-  setTimeout(()=>el.remove(),2000);
+  setTimeout(()=>el.remove(), 2400);
 }
 
-function sorted(arr){
-  const a=[...arr];
-  if(sortBy==='prio') a.sort((x,y)=>x.prio-y.prio);
-  else if(sortBy==='date') a.sort((x,y)=>(x.date||'9999')<(y.date||'9999')?-1:1);
-  else if(sortBy==='type') a.sort((x,y)=>x.type.localeCompare(y.type));
-  return a;
+// ── RENDER ──────────────────────────────────────────────
+function updateGcalBtn(){
+  const btn=document.getElementById('gcal-btn');
+  const lbl=document.getElementById('gcal-label');
+  const hasCid = !!localStorage.getItem('ag_gcal_cid');
+  if(isTokenValid()){ btn.classList.add('on'); lbl.textContent='Google Agenda ✓'; }
+  else if(hasCid){ btn.classList.remove('on'); lbl.textContent='Google Agenda (reconectar)'; }
+  else{ btn.classList.remove('on'); lbl.textContent='Google Agenda'; }
 }
 
-function renderAll(){
-  renderStats();renderPills();renderBoard();
-  const gcalBtn=document.getElementById('gcal-btn');
-  if(gcalOn){gcalBtn.classList.add('on');document.getElementById('gcal-label').textContent='Google Agenda ✓';}
-  else{gcalBtn.classList.remove('on');document.getElementById('gcal-label').textContent='Google Agenda';}
-}
+function renderAll(){ renderStats(); renderPills(); renderBoard(); updateGcalBtn(); }
 
 function renderStats(){
   const c={};SS.forEach(s=>c[s]=tasks.filter(t=>t.status===s).length);
@@ -407,7 +311,11 @@ function renderPills(){
 function renderBoard(){
   const byS={};SS.forEach(s=>byS[s]=[]);
   const list=filterStatus==='all'?tasks:tasks.filter(t=>t.status===filterStatus);
-  sorted(list).forEach(t=>byS[t.status].push(t));
+  const sorted=[...list];
+  if(sortBy==='prio') sorted.sort((a,b)=>a.prio-b.prio);
+  else if(sortBy==='date') sorted.sort((a,b)=>(a.date||'9999')<(b.date||'9999')?-1:1);
+  else if(sortBy==='type') sorted.sort((a,b)=>a.type.localeCompare(b.type));
+  sorted.forEach(t=>byS[t.status].push(t));
   document.getElementById('board').innerHTML=SS.map(s=>`
     <div class="lane lane-${s}" id="lane-${s}"
       ondragover="onDragOver(event,'${s}')"
@@ -419,18 +327,17 @@ function renderBoard(){
         <div class="lane-count">${byS[s].length}</div>
       </div>
       <div class="lane-body" id="body-${s}">
-        ${byS[s].length===0?`<div class="empty-lane">Solte aqui</div>`:byS[s].map(t=>cardHTML(t)).join('')}
+        ${byS[s].length===0?`<div class="empty-lane">Solte aqui</div>`:byS[s].map(cardHTML).join('')}
       </div>
     </div>`).join('');
 
-  // attach drag listeners
   document.querySelectorAll('.card').forEach(el=>{
     el.addEventListener('dragstart',e=>{
       dragId=parseInt(el.dataset.id);
       el.classList.add('dragging');
       e.dataTransfer.effectAllowed='move';
     });
-    el.addEventListener('dragend',e=>{
+    el.addEventListener('dragend',()=>{
       el.classList.remove('dragging');
       document.querySelectorAll('.lane').forEach(l=>l.classList.remove('drag-over'));
     });
@@ -450,7 +357,7 @@ function cardHTML(t){
     <div class="card-meta">
       <span class="badge ${t.type==='pro'?'badge-pro':'badge-pes'}">${t.type==='pro'?'Profissional':'Pessoal'}</span>
       <span class="badge-prio">${PL[t.prio]}</span>
-      ${t.gcal?`<span class="gcal-icon" title="Sincronizado"></span>`:''}
+      ${t.gcal&&t.gcalEventId?`<span class="gcal-icon" title="Sincronizado com Google Agenda"></span>`:''}
       ${d?`<span class="card-date">${d}</span>`:''}
     </div>
     <div class="card-actions">
@@ -464,39 +371,49 @@ function cardHTML(t){
   </div>`;
 }
 
-// drag & drop
-function onDragOver(e,status){
+// ── DRAG & DROP ─────────────────────────────────────────
+function onDragOver(e,s){ e.preventDefault(); e.dataTransfer.dropEffect='move'; document.getElementById('lane-'+s).classList.add('drag-over'); }
+function onDragLeave(e,s){ const l=document.getElementById('lane-'+s); if(!l.contains(e.relatedTarget)) l.classList.remove('drag-over'); }
+async function onDrop(e,s){
   e.preventDefault();
-  e.dataTransfer.dropEffect='move';
-  document.getElementById('lane-'+status).classList.add('drag-over');
-}
-function onDragLeave(e,status){
-  // only remove if leaving the lane itself
-  const lane=document.getElementById('lane-'+status);
-  if(!lane.contains(e.relatedTarget)) lane.classList.remove('drag-over');
-}
-function onDrop(e,status){
-  e.preventDefault();
-  document.getElementById('lane-'+status).classList.remove('drag-over');
+  document.getElementById('lane-'+s).classList.remove('drag-over');
   if(dragId===null) return;
   const t=tasks.find(x=>x.id===dragId);
-  if(t && t.status!==status){
-    t.status=status;
-    save();renderAll();
-    toast(`Movido para "${SL[status]}"`);
+  if(t && t.status!==s){
+    t.status=s;
+    save(); renderAll();
+    toast(`Movido para "${SL[s]}"`);
+    if(t.gcal && t.gcalEventId) await updateGcalEvent(t);
   }
   dragId=null;
 }
 
-function setFilter(s){filterStatus=s;renderAll()}
-function setSort(v){sortBy=v;renderAll()}
-function markDone(id){const t=tasks.find(x=>x.id===id);if(t){t.status='done';save();renderAll();toast('✓ Concluída')}}
-function delTask(id){if(!confirm('Excluir?')){return}tasks=tasks.filter(x=>x.id!==id);save();renderAll();toast('Excluída')}
-function openAdd(){editId=null;showModal()}
-function openEdit(id){editId=id;showModal()}
+// ── AÇÕES ────────────────────────────────────────────────
+function setFilter(s){ filterStatus=s; renderAll(); }
+function setSort(v){ sortBy=v; renderAll(); }
 
-function showModal(){
+async function markDone(id){
+  const t=tasks.find(x=>x.id===id);
+  if(!t) return;
+  t.status='done';
+  save(); renderAll(); toast('✓ Concluída');
+  if(t.gcal && t.gcalEventId) await updateGcalEvent(t);
+}
+
+async function delTask(id){
+  if(!confirm('Excluir esta tarefa?')) return;
+  const t=tasks.find(x=>x.id===id);
+  if(t && t.gcal && t.gcalEventId) await deleteGcalEvent(t);
+  tasks=tasks.filter(x=>x.id!==id);
+  save(); renderAll(); toast('Tarefa excluída');
+}
+
+function openAdd(){ editId=null; showTaskModal(); }
+function openEdit(id){ editId=id; showTaskModal(); }
+
+function showTaskModal(){
   const t=editId?tasks.find(x=>x.id===editId):null;
+  const hasCid=!!localStorage.getItem('ag_gcal_cid');
   document.getElementById('modal-root').innerHTML=`
   <div class="overlay" id="ov" onclick="bgClose(event)">
   <div class="modal">
@@ -519,62 +436,123 @@ function showModal(){
       </select></div>
       <div class="fr"><label>Data</label><input type="date" id="f-da" value="${t?t.date:''}"></div>
     </div>
-    ${gcalOn?`<label class="check-row"><input type="checkbox" id="f-g" ${t&&t.gcal?'checked':''}><span>Sincronizar com Google Agenda</span></label>`:''}
+    ${hasCid?`<label class="check-row">
+      <input type="checkbox" id="f-g" ${t&&t.gcal?'checked':''}>
+      <span>Sincronizar com Google Agenda ${t&&t.gcalEventId?'<span style="color:var(--c-done);font-size:10px">● sincronizado</span>':''}</span>
+    </label>`:`<div style="font-size:12px;color:var(--text3);margin-bottom:13px;padding:9px 11px;border:1px dashed var(--border);border-radius:var(--r-sm)">
+      <a href="#" onclick="event.preventDefault();closeModal();openGcalModal()" style="color:var(--c-todo)">Conecte o Google Agenda</a> para sincronizar automaticamente.
+    </div>`}
     <div class="m-actions">
       <button class="btn" onclick="closeModal()">Cancelar</button>
-      <button class="btn btn-solid" onclick="saveTask()">${t?'Salvar':'Adicionar'}</button>
+      <button class="btn btn-solid" id="btn-save" onclick="saveTask()">${t?'Salvar':'Adicionar'}</button>
     </div>
   </div></div>`;
   document.getElementById('f-t').focus();
 }
 
+async function saveTask(){
+  const title=document.getElementById('f-t').value.trim();
+  if(!title){ alert('Informe o título.'); return; }
+  const syncGcal = !!document.getElementById('f-g')?.checked;
+  const data={
+    title,
+    desc:document.getElementById('f-d').value.trim(),
+    type:document.getElementById('f-ty').value,
+    prio:parseInt(document.getElementById('f-p').value),
+    status:document.getElementById('f-s').value,
+    date:document.getElementById('f-da').value,
+    gcal:syncGcal,
+    gcalEventId: editId ? tasks.find(x=>x.id===editId)?.gcalEventId||null : null,
+  };
+
+  const saveBtn=document.getElementById('btn-save');
+  if(saveBtn){ saveBtn.textContent='Salvando...'; saveBtn.disabled=true; }
+
+  if(syncGcal){
+    if(editId){
+      const existing=tasks.find(x=>x.id===editId);
+      if(existing?.gcalEventId){
+        Object.assign(data,{gcalEventId:existing.gcalEventId});
+        await updateGcalEvent({...data,gcalEventId:existing.gcalEventId});
+      } else {
+        const eid=await createGcalEvent(data);
+        if(eid) data.gcalEventId=eid;
+      }
+    } else {
+      const eid=await createGcalEvent(data);
+      if(eid) data.gcalEventId=eid;
+    }
+  } else if(editId){
+    const existing=tasks.find(x=>x.id===editId);
+    if(existing?.gcalEventId && existing.gcal && !syncGcal){
+      await deleteGcalEvent(existing);
+      data.gcalEventId=null;
+    }
+  }
+
+  if(editId){ Object.assign(tasks.find(x=>x.id===editId), data); toast('Tarefa atualizada'); }
+  else{ tasks.push({id:nextId++,...data}); toast(syncGcal&&data.gcalEventId?'Adicionada e sincronizada ✓':'Tarefa adicionada'); }
+
+  save(); closeModal(); renderAll();
+}
+
+// ── GOOGLE AGENDA MODAL ──────────────────────────────────
 function openGcalModal(){
+  const hasCid=!!localStorage.getItem('ag_gcal_cid');
+  const connected=isTokenValid();
   document.getElementById('modal-root').innerHTML=`
   <div class="overlay" id="ov" onclick="bgClose(event)">
   <div class="modal">
-    <div class="modal-title">Integrar Google Agenda</div>
-    <div class="gcal-steps">
-      <div class="gs"><div class="gs-n">1</div><p>Acesse <a href="https://console.cloud.google.com" target="_blank">console.cloud.google.com</a>, crie um projeto e ative a <strong>Google Calendar API</strong>.</p></div>
-      <div class="gs"><div class="gs-n">2</div><p>Em "Credenciais", crie um <strong>ID do cliente OAuth 2.0</strong> (tipo: aplicativo web) e adicione a URL desta página como origem autorizada.</p></div>
-      <div class="gs"><div class="gs-n">3</div><p>Cole o Client ID abaixo e autorize. O Google abrirá uma janela de confirmação de acesso.</p></div>
-    </div>
+    <div class="modal-title">Google Agenda</div>
+    ${connected
+      ? `<div class="gcal-status ok">✓ Conectado e autorizado. Tarefas marcadas serão sincronizadas automaticamente.</div>`
+      : hasCid
+        ? `<div class="gcal-status info">Client ID salvo. Clique em "Autorizar acesso" para gerar o token.</div>`
+        : `<div class="gcal-setup">
+            <div class="gs"><div class="gs-n">1</div><p>Acesse <a href="https://console.cloud.google.com" target="_blank">console.cloud.google.com</a>, crie um projeto e ative a <strong>Google Calendar API</strong>.</p></div>
+            <div class="gs"><div class="gs-n">2</div><p>Em "Credenciais" → "Criar credenciais" → <strong>ID do cliente OAuth 2.0</strong>. Tipo: <strong>Aplicativo web</strong>. Em "Origens JavaScript autorizadas" adicione a URL do seu site (ex: <code>https://seu-usuario.github.io</code>).</p></div>
+            <div class="gs"><div class="gs-n">3</div><p>Cole o Client ID abaixo e clique em "Autorizar acesso". Uma janela do Google pedirá sua confirmação.</p></div>
+          </div>`
+    }
     <div class="fr"><label>Client ID do Google OAuth 2.0</label>
-      <input id="gcal-cid" placeholder="xxxxxxxx.apps.googleusercontent.com" value="${localStorage.getItem('ag_gcal')||''}">
+      <input id="gcal-cid" placeholder="xxxxxxxx.apps.googleusercontent.com" value="${localStorage.getItem('ag_gcal_cid')||''}">
     </div>
     <div class="m-actions">
-      <button class="btn" onclick="closeModal()">Cancelar</button>
+      ${connected?`<button class="btn" onclick="revokeGcal()">Desconectar</button>`:''}
+      <button class="btn" onclick="closeModal()">Fechar</button>
       <button class="btn btn-solid" onclick="connectGcal()">Autorizar acesso</button>
     </div>
   </div></div>`;
 }
 
-function connectGcal(){
-  const v=document.getElementById('gcal-cid').value.trim();
-  if(!v){alert('Informe o Client ID.');return}
-  localStorage.setItem('ag_gcal',v);
-  gcalOn=true;closeModal();renderAll();toast('✓ Google Agenda conectado!');
+async function connectGcal(){
+  const cid=document.getElementById('gcal-cid').value.trim();
+  if(!cid){ alert('Informe o Client ID.'); return; }
+  localStorage.setItem('ag_gcal_cid', cid);
+  // rebind with new client id
+  Object.defineProperty(window,'GCAL_CLIENT_ID',{value:cid,writable:true,configurable:true});
+  closeModal();
+  toast('Abrindo autenticação Google...');
+  const ok=await ensureToken();
+  if(ok){ toast('✓ Google Agenda conectado!'); renderAll(); }
 }
 
-function saveTask(){
-  const title=document.getElementById('f-t').value.trim();
-  if(!title){alert('Informe o título.');return}
-  const data={
-    title,desc:document.getElementById('f-d').value.trim(),
-    type:document.getElementById('f-ty').value,
-    prio:parseInt(document.getElementById('f-p').value),
-    status:document.getElementById('f-s').value,
-    date:document.getElementById('f-da').value,
-    gcal:gcalOn&&(document.getElementById('f-g')?.checked||false),
-  };
-  if(editId){Object.assign(tasks.find(x=>x.id===editId),data);toast('Tarefa atualizada')}
-  else{tasks.push({id:nextId++,...data});toast('Tarefa adicionada')}
-  save();closeModal();renderAll();
+function revokeGcal(){
+  if(gAccessToken) google?.accounts?.oauth2?.revoke(gAccessToken,()=>{});
+  gAccessToken=null; gTokenExpiry=0;
+  localStorage.removeItem('ag_gcal_token');
+  localStorage.removeItem('ag_gcal_expiry');
+  gcalReady=false;
+  closeModal(); renderAll(); toast('Google Agenda desconectado');
 }
 
-function closeModal(){document.getElementById('modal-root').innerHTML=''}
-function bgClose(e){if(e.target.id==='ov')closeModal()}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+function closeModal(){ document.getElementById('modal-root').innerHTML=''; }
+function bgClose(e){ if(e.target.id==='ov') closeModal(); }
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
 
+// ── INIT ────────────────────────────────────────────────
+// Restore token from storage and validate
+if(isTokenValid()) gcalReady=true;
 renderAll();
 </script>
 </body>
